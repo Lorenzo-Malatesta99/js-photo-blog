@@ -1,0 +1,33 @@
+/* Reset rules */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+header{
+    background-image: url(./img/wall.png);
+}
+
+main{
+    background-image: url(./img/cork.png);
+}
+
+.container{
+    width: 1024px;
+    margin: 0 auto;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card{
+    background: white;
+}
