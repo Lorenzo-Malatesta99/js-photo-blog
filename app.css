@@ -29,6 +29,8 @@ img {
   width: 100%;
 }
 
+/* Layout */
+
 .title {
   font-size: 70px;
   font-family: cursive;
@@ -106,6 +108,7 @@ img {
   display: block;
   margin: 0 auto;
 }
+
 button {
   position: absolute;
   top: 10px;
@@ -114,4 +117,8 @@ button {
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
