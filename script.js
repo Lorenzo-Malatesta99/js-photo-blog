@@ -1,4 +1,3 @@
-
 // Versione simile alle correzioni e più corretta:
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -6,46 +5,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector(".overlay");
   const overlayImage = overlay.querySelector(".image-container img");
   const closeOverlayButton = document.getElementById("close-overlay");
-  
+
   function toggleOverlay() {
     overlay.classList.toggle("d-none");
     document.body.classList.toggle("overflow-hidden");
   }
-  
+
   overlay.addEventListener("click", (event) => {
     if (event.target.tagName !== "IMG") {
       toggleOverlay();
     }
   });
-  
+
   closeOverlayButton.addEventListener("click", (event) => {
     event.stopPropagation();
     toggleOverlay();
   });
-  
+
   function fetchPhotos() {
     axios
-    .get("https://jsonplaceholder.typicode.com/photos?_limit=6")
-    .then((response) => {
-      const photos = response.data;
-      let photosHTML = "";
+      .get("https://jsonplaceholder.typicode.com/photos?_limit=6")
+      .then((response) => {
+        const photos = response.data;
+        let photosHTML = "";
         photos.forEach((photo) => {
           photosHTML += ` 
             <div class="col-4">
-            <div class="card">
-                    <img class="pin" src="./img/pin.svg" alt="pin">
-                    <img class="image thumbnail" src="${photo.url}" alt="${photo.title}" data-full-url="${photo.url}"> 
-                    <p class="caption">${photo.title}</p> 
-                    </div>
-                    </div> `;
+                 <div class="card">
+                     <img class="pin" src="./img/pin.svg" alt="pin">
+                     <img class="image thumbnail" src="${photo.url}" alt="${photo.title}">
+                     <p class="caption">${photo.title}</p>
+                 </div>
+            </div> `;
         });
         row.innerHTML += photosHTML;
-        addThumbnailClickEvent(photos); // Passa l'array photos alla funzione
+        addThumbnailClickEvent(photos);
       })
       .catch((error) => console.error("Errore nella fetch delle foto:", error));
-    }
-
-    function addThumbnailClickEvent(photos) {
+  }
+// aggiungiamo un evento di click ad ogni miniatura delle foto che attiva toggleoverlay()
+  function addThumbnailClickEvent(photos) {
     const thumbnails = document.querySelectorAll(".thumbnail");
     thumbnails.forEach((thumbnail, index) => {
       thumbnail.addEventListener("click", () => {
@@ -55,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-  
+
   fetchPhotos();
 });
 
@@ -78,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //             <div class="col-4">
 //                 <div class="card">
 //                     <img class="pin" src="./img/pin.svg" alt="pin">
-//                     <img class="image thumbnail" src="${photo.url}" alt="${photo.title}" data-full-url="${photo.url}">
+//                     <img class="image thumbnail" src="${photo.url}" alt="${photo.title}">
 //                     <p class="caption">${photo.title}</p>
 //                 </div>
 //             </div> `;
@@ -96,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //   thumbnails.forEach((thumbnail) => {
 //     thumbnail.addEventListener("click", () => {
 //       const fullSizeUrl = thumbnail.getAttribute("data-full-url");
-//       console.log(`URL immagine completa: ${fullSizeUrl}`);
 //       overlayImage.src = fullSizeUrl;
 //       overlay.classList.remove("d-none");
 //     });
